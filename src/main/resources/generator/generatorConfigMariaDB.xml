@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry
+            location="C:\Users\Rex\.IntelliJIdea2019.1\config\jdbc-drivers\MariaDB Connector J\2.4.1\mariadb-java-client-2.4.1.jar"/>
+
+    <context id="mysql" targetRuntime="MyBatis3Simple">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="org.mariadb.jdbc.Driver"
+                        connectionURL="jdbc:mariadb://localhost:32768/leave_system" userId="root"
+                        password="ji394su3"/>
+
+        <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="tw.com.rex.springbootmultipledatabase.model.dao"
+                            targetProject="src/main/java">
+            <property name="rootClass" value="tw.com.rex.springbootmultipledatabase.model.dao.base.BaseDao"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+
+        <javaClientGenerator targetPackage="tw.com.rex.springbootmultipledatabase.mapper" type="XMLMAPPER"
+                             targetProject="src/main/java"/>
+
+        <table tableName="company" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="company_address" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="company_email" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="company_fax" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="company_mobile" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="company_phone" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="company_phone" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="employee" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="employee_address" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="employee_email" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="employee_fax" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="employee_mobile" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="employee_phone" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="employee_role" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="leave_history" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="role" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+    </context>
+</generatorConfiguration>
