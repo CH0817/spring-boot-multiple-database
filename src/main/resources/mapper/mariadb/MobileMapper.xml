@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tw.com.rex.springbootmultipledatabase.mapper.mariadb.MobileMapper">
+  <resultMap id="BaseResultMap" type="tw.com.rex.springbootmultipledatabase.model.dao.mariadb.Mobile">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mobile
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="tw.com.rex.springbootmultipledatabase.model.dao.mariadb.Mobile">
+    insert into mobile (id, mobile)
+    values (#{id,jdbcType=INTEGER}, #{mobile,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="tw.com.rex.springbootmultipledatabase.model.dao.mariadb.Mobile">
+    update mobile
+    set mobile = #{mobile,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, mobile
+    from mobile
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, mobile
+    from mobile
+  </select>
+</mapper>
