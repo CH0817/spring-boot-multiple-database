@@ -6,18 +6,16 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan(basePackages = {"classpath:mapper/mariaDb/*.xml"})
+@MapperScan(basePackages = {"classpath:mapper/mysql/*.xml"})
 public class MySqlConfig {
 
-    @Bean(name = "mariaDbDataSource")
-    @Primary
-    @ConfigurationProperties("spring.datasource.mariadb")
-    public DataSource mariaDbDataSource() {
+    @Bean(name = "masterDataSource")
+    @ConfigurationProperties("spring.datasource.mysql")
+    public DataSource masterDataSource() {
         return DataSourceBuilder.create().type(HikariDataSource.class).build();
     }
 
