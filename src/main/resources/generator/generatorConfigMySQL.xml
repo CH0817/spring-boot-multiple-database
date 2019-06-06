@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
     <classPathEntry
-            location="C:\Users\Rex\.IntelliJIdea2019.1\config\jdbc-drivers\MariaDB Connector J\2.4.1\mariadb-java-client-2.4.1.jar"/>
+            location="C:\Users\Rex\.IntelliJIdea2019.1\config\jdbc-drivers\MySQL Connector\J 8\8.0.15\mysql-connector-java-8.0.15.jar"/>
 
     <context id="mysql" targetRuntime="MyBatis3Simple">
         <property name="javaFileEncoding" value="UTF-8"/>
@@ -17,85 +17,23 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
 
-        <jdbcConnection driverClass="org.mariadb.jdbc.Driver"
-                        connectionURL="jdbc:mariadb://localhost:32768/leave_system" userId="root"
-                        password="ji394su3"/>
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:33660/leave_system"
+                        userId="rex" password="ji394su3"/>
 
         <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
             <property name="forceBigDecimals" value="true"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="tw.com.rex.springbootmultipledatabase.model.dao"
-                            targetProject="src/main/java">
-            <property name="rootClass" value="tw.com.rex.springbootmultipledatabase.model.dao.base.BaseDao"/>
-        </javaModelGenerator>
+        <javaModelGenerator targetPackage="tw.com.rex.springbootmultipledatabase.model.dao.mysql"
+                            targetProject="src/main/java"/>
 
-        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+        <sqlMapGenerator targetPackage="mapper.mysql" targetProject="src/main/resources"/>
 
-        <javaClientGenerator targetPackage="tw.com.rex.springbootmultipledatabase.mapper" type="XMLMAPPER"
+        <javaClientGenerator targetPackage="tw.com.rex.springbootmultipledatabase.mapper.mysql" type="XMLMAPPER"
                              targetProject="src/main/java"/>
 
-        <table tableName="company" enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>
-        <table tableName="company_address" enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>
-        <table tableName="company_email" enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>
-        <table tableName="company_fax" enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>
-        <table tableName="company_mobile" enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>
-        <table tableName="company_phone" enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>
-        <table tableName="company_phone" enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>
-        <table tableName="employee" enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>
-        <table tableName="employee_address" enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>
-        <table tableName="employee_email" enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>
-        <table tableName="employee_fax" enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>
-        <table tableName="employee_mobile" enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>
-        <table tableName="employee_phone" enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>
-        <table tableName="employee_role" enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>
-        <table tableName="leave_history" enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false">
-            <property name="ignoreQualifiersAtRuntime" value="true"/>
-        </table>
-        <table tableName="role" enableCountByExample="false" enableSelectByExample="false"
+        <table tableName="user" enableCountByExample="false" enableSelectByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>
