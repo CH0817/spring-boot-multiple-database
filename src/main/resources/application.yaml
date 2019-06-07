@@ -1,12 +1,11 @@
-spring:
-  datasource:
-    mysql:
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:33660/leave_system?useUnicode=true&characterEncoding=UTF-8
-      username: rex
-      password: ji394su3
-    mariadb:
-      driver-class-name: org.mariadb.jdbc.Driver
-      url: jdbc:mariadb://localhost:32768/account_book
-      username: root
-      password: ji394su3
+datasource:
+  mysql:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:33660/leave_system?useUnicode=true&characterEncoding=UTF-8
+    username: rex
+    password: ji394su3
+  mariadb:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:32768/account_book
+    username: root
+    password: ji394su3
