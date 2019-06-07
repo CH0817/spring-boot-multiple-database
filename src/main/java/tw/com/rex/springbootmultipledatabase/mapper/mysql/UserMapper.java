@@ -1,9 +1,13 @@
 package tw.com.rex.springbootmultipledatabase.mapper.mysql;
 
-import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 import tw.com.rex.springbootmultipledatabase.model.dao.mysql.User;
 
+import java.util.List;
+
+@Mapper
 public interface UserMapper {
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(User record);
