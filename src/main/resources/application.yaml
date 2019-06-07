@@ -6,6 +6,6 @@ datasource:
     password: ji394su3
   mariadb:
     driver-class-name: org.mariadb.jdbc.Driver
-    jdbcUrl: jdbc:mariadb://localhost:32768/account_book
+    jdbcUrl: jdbc:mariadb://localhost:32768/test_db
     username: root
     password: ji394su3
