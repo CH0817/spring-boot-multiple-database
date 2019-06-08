@@ -1,5 +1,7 @@
 package tw.com.rex.springbootmultipledatabase.config;
 
+import com.atomikos.icatch.jta.UserTransactionImp;
+import com.atomikos.icatch.jta.UserTransactionManager;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -7,13 +9,16 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.boot.jta.atomikos.AtomikosDataSourceBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.jta.JtaTransactionManager;
 
 import javax.sql.DataSource;
+import javax.transaction.UserTransaction;
 
 @Configuration
 @MapperScan(basePackages = {"tw.com.rex.springbootmultipledatabase.mapper.mysql"},
@@ -24,15 +29,24 @@ public class MySqlConfig {
     @Primary
     @ConfigurationProperties(prefix = "datasource.mysql")
     public DataSource mysqlDataSource() {
-        return DataSourceBuilder.create().build();
+        return new AtomikosDataSourceBean();
+        // return DataSourceBuilder.create().build();
     }
 
-    @Bean(name = "mysqlTransactionManager")
+    @Bean(name = "transactionManager")
     @Primary
-    public DataSourceTransactionManager mysqlTransactionManager(
-            @Qualifier("mysqlDataSource") DataSource mysqlDataSource) {
-        return new DataSourceTransactionManager(mysqlDataSource);
+    public JtaTransactionManager transactionManager() {
+        UserTransactionManager userTransactionManager = new UserTransactionManager();
+        UserTransaction userTransaction = new UserTransactionImp();
+        return new JtaTransactionManager(userTransaction, userTransactionManager);
     }
+
+    // @Bean(name = "mysqlTransactionManager")
+    // @Primary
+    // public DataSourceTransactionManager mysqlTransactionManager(
+    //         @Qualifier("mysqlDataSource") DataSource mysqlDataSource) {
+    //     return new DataSourceTransactionManager(mysqlDataSource);
+    // }
 
     @Bean(name = "mysqlSqlSessionFactory")
     @Primary
