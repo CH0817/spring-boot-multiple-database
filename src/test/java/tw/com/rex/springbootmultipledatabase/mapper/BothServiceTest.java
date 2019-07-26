@@ -20,7 +20,7 @@ public class BothServiceTest {
     @Autowired
     private BothService service;
 
-    @Test
+    @Test(expected = ArithmeticException.class)
     public void insert() {
         User user = new User();
         user.setName("XD");
