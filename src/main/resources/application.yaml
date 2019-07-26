@@ -6,12 +6,12 @@ datasource:
       url: jdbc:mysql://localhost:33660/leave_system?useUnicode=true&characterEncoding=UTF-8
       user: rex
       password: ji394su3
-  mariadb:
-    xa-data-source-class-name: org.mariadb.jdbc.MySQLDataSource
-    xa-properties:
-      url: jdbc:mariadb://localhost:32768/test_db
-      user: root
-      password: ji394su3
+#  mariadb:
+#    xa-data-source-class-name: org.mariadb.jdbc.MySQLDataSource
+#    xa-properties:
+#      url: jdbc:mariadb://localhost:32768/test_db
+#      user: root
+#      password: ji394su3
 # normal datasource
 #datasource:
 #  mysql:

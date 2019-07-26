@@ -2,26 +2,43 @@ package tw.com.rex.springbootmultipledatabase.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jta.atomikos.AtomikosDataSourceBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import tw.com.rex.springbootmultipledatabase.config.property.MariaDbConfigProperties;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
 @MapperScan(basePackages = {"tw.com.rex.springbootmultipledatabase.mapper.mariadb"},
-            sqlSessionTemplateRef = "mariadbSqlSessionTemplate")
+            sqlSessionFactoryRef = "mariadbSqlSessionFactory")
+// sqlSessionTemplateRef = "mariadbSqlSessionTemplate")
 public class MariaDbConfig {
 
+    private final MariaDbConfigProperties mariaDbConfigProperties;
+
+    @Autowired
+    public MariaDbConfig(MariaDbConfigProperties mariaDbConfigProperties) {
+        this.mariaDbConfigProperties = mariaDbConfigProperties;
+    }
+
     @Bean(name = "mariaDbDataSource")
-    @ConfigurationProperties("datasource.mariadb")
+    // @ConfigurationProperties("datasource.mariadb")
     public DataSource mariaDbDataSource() {
-        return new AtomikosDataSourceBean();
+        Properties properties = new Properties();
+        properties.setProperty("url", mariaDbConfigProperties.getXaProperties().getUrl());
+        properties.setProperty("user", mariaDbConfigProperties.getXaProperties().getUser());
+        properties.setProperty("password", mariaDbConfigProperties.getXaProperties().getPassword());
+        AtomikosDataSourceBean dataSourceBean = new AtomikosDataSourceBean();
+        dataSourceBean.setXaDataSourceClassName(mariaDbConfigProperties.getXaDataSourceClassName());
+        dataSourceBean.setXaProperties(properties);
+        return dataSourceBean;
+        // return new AtomikosDataSourceBean();
         // return DataSourceBuilder.create().build();
     }
 
@@ -41,10 +58,10 @@ public class MariaDbConfig {
         return sessionFactory.getObject();
     }
 
-    @Bean(name = "mariadbSqlSessionTemplate")
-    public SqlSessionTemplate testSqlSessionTemplate(
-            @Qualifier("mariadbSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
-        return new SqlSessionTemplate(sqlSessionFactory);
-    }
+    // @Bean(name = "mariadbSqlSessionTemplate")
+    // public SqlSessionTemplate testSqlSessionTemplate(
+    //         @Qualifier("mariadbSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+    //     return new SqlSessionTemplate(sqlSessionFactory);
+    // }
 
 }
