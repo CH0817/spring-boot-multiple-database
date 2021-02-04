@@ -3,9 +3,9 @@ datasource:
   mysql:
     xa-data-source-class-name: com.mysql.cj.jdbc.MysqlXADataSource
     xa-properties:
-      url: jdbc:mysql://localhost:33660/leave_system?useUnicode=true&characterEncoding=UTF-8
+      url: jdbc:mysql://192.168.43.201:33660/leave_system?useUnicode=true&characterEncoding=UTF-8
       user: rex
-      password: ji394su3
+      password: 1
 #  mariadb:
 #    xa-data-source-class-name: org.mariadb.jdbc.MySQLDataSource
 #    xa-properties:
